@@ -12,6 +12,7 @@ import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.recommender.IDRescorer;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
+import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
 
 /**
  * @author zhangwen
@@ -26,10 +27,21 @@ public class BaseRecommender implements Recommender {
 		
 	}
 
+	public BaseRecommender(DataModel dataModel) {
+		this.setDataModel(dataModel);
+	}
+	
 	private Recommender recommender;
-	@SuppressWarnings("unused")
 	private DataModel dataModel;	
+	private ItemSimilarity similarity;
 
+	public ItemSimilarity getSimilarity() {
+		return similarity;
+	}
+	public void setSimilarity(ItemSimilarity similarity) {
+		this.similarity = similarity;
+	}	
+	
 	public void setDataModel(DataModel dataModel) {
 		this.dataModel = dataModel;
 	}
@@ -74,7 +86,8 @@ public class BaseRecommender implements Recommender {
 
 	@Override
 	public DataModel getDataModel() {
-		return recommender.getDataModel();
+		return dataModel;
+		//return recommender.getDataModel();
 	}
 
 	@Override
