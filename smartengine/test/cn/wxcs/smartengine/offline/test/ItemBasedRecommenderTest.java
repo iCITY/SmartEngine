@@ -1,4 +1,4 @@
-package cn.wxcs.smartengine.test;
+package cn.wxcs.smartengine.offline.test;
 
 import static org.junit.Assert.*;
 
