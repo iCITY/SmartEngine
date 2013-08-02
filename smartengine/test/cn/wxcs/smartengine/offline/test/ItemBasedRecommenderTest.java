@@ -31,7 +31,7 @@ public class ItemBasedRecommenderTest {
 	public void testRecommend() throws IOException, TasteException {
 		dateModel = new FileDataModel(new File(TEST_FILE));
 		recommender = new ItemBasedRecommender(dateModel);
-		List<RecommendedItem> items = recommender.(TEST_USER_ID,TEST_ITEM_ID, TEST_RECOMMEND_COUNT);
+		List<RecommendedItem> items = recommender.recommend(TEST_USER_ID, TEST_RECOMMEND_COUNT);
 		
 		logger.info(items.size());
 		for(RecommendedItem item : items){
