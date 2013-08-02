@@ -18,16 +18,16 @@ import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
  * @author zhangwen
  * 
  */
-public class BaseRecommender implements Recommender {
+public class AbstractRecommender implements Recommender {
 
 	/**
 	 * 
 	 */
-	public BaseRecommender() {
+	public AbstractRecommender() {
 		
 	}
 
-	public BaseRecommender(DataModel dataModel) {
+	public AbstractRecommender(DataModel dataModel) {
 		this.setDataModel(dataModel);
 	}
 	

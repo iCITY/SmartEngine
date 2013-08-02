@@ -5,7 +5,7 @@ import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.common.TasteException;
 
-public class ItemBasedRecommender extends BaseRecommender {
+public class ItemBasedRecommender extends AbstractRecommender {
 
 	public ItemBasedRecommender() throws TasteException { 
 		Init();

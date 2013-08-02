@@ -19,9 +19,10 @@ import cn.wxcs.smartengine.recommender.ItemBasedRecommender;
 public class ItemBasedRecommenderTest {
 	private static Log logger = LogFactory.getLog(ItemBasedRecommenderTest.class);
 	
-	private static final String TEST_FILE = "data/evaluate";
-	private static final long TEST_USER_ID = 10010140935l;
-	private static final int TEST_RECOMMEND_COUNT = 20;
+	private static final String TEST_FILE = "test/test_data";
+	private static final long TEST_USER_ID = 10010145419l;
+	private static final long TEST_ITEM_ID = 1l;
+	private static final int TEST_RECOMMEND_COUNT = 50;
 	
 	protected DataModel dateModel;
 	protected ItemBasedRecommender recommender;
@@ -30,7 +31,7 @@ public class ItemBasedRecommenderTest {
 	public void testRecommend() throws IOException, TasteException {
 		dateModel = new FileDataModel(new File(TEST_FILE));
 		recommender = new ItemBasedRecommender(dateModel);
-		List<RecommendedItem> items = recommender.recommend(TEST_USER_ID, TEST_RECOMMEND_COUNT);
+		List<RecommendedItem> items = recommender.(TEST_USER_ID,TEST_ITEM_ID, TEST_RECOMMEND_COUNT);
 		
 		logger.info(items.size());
 		for(RecommendedItem item : items){
