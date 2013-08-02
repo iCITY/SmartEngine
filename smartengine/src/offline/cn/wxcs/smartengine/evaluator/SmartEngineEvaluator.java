@@ -44,6 +44,7 @@ public class SmartEngineEvaluator {
 		logger.info("ItemBasedRecommder 准确率：" + stats.getPrecision());
 		logger.info("ItemBasedRecommder 召回率：" + stats.getRecall());
 				int dtest =1;
+				int dtestw =3;
 
 	}
 
