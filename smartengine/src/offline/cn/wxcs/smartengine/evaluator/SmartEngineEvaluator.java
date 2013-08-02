@@ -45,6 +45,7 @@ public class SmartEngineEvaluator {
 		logger.info("ItemBasedRecommder 召回率：" + stats.getRecall());
 				int dtest =1;
 				int dtestw =3;
+				int dttttt=4;
 
 	}
 
