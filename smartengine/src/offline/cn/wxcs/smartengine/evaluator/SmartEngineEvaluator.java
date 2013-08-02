@@ -43,6 +43,7 @@ public class SmartEngineEvaluator {
 				0.7, 1.0);
 		logger.info("ItemBasedRecommder 准确率：" + stats.getPrecision());
 		logger.info("ItemBasedRecommder 召回率：" + stats.getRecall());
+				int dtest =1;
 
 	}
 
