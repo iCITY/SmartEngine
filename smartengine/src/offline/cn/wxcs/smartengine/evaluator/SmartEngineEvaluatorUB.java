@@ -16,39 +16,41 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import cn.wxcs.smartengine.recommender.ItemBasedRecommender;
 
-public class SmartEngineEvaluator {
+import cn.wxcs.smartengine.recommender.UserBasedRecommender;
+
+public class SmartEngineEvaluatorUB {
 	private static Log logger = LogFactory.getLog(SmartEngineEvaluator.class);
 	private static final String EVALUATE_FILE = "data/evaluate";
     protected DataModel dateModel;
     
-	public SmartEngineEvaluator() throws IOException {
+	public SmartEngineEvaluatorUB() throws IOException {
 		dateModel = new FileDataModel(new File(EVALUATE_FILE));
 	}
 
-	private RecommenderIRStatsEvaluator itemBasedEvaluator;
+	private RecommenderIRStatsEvaluator userbasedEvaluator;
 
 	public void Run() throws TasteException {
-		logger.info("开始测试ItemBasedRecommder");
-		itemBasedEvaluator = new GenericRecommenderIRStatsEvaluator();
+		logger.info("开始测试userbasedRecommder");
+		userbasedEvaluator = new GenericRecommenderIRStatsEvaluator();
 		RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
 			@Override
 			public Recommender buildRecommender(DataModel model) throws TasteException {
-				return new ItemBasedRecommender(model);
+				return new UserBasedRecommender(model);
 			}
 		};
-		IRStatistics stats = itemBasedEvaluator.evaluate(recommenderBuilder, null,
-				dateModel, null,10,
+		IRStatistics stats = userbasedEvaluator.evaluate(recommenderBuilder, null,
+				dateModel, null,30,
 				Double.NEGATIVE_INFINITY, 1);
-		logger.info("ItemBasedRecommder 准确率：" + stats.getPrecision());
-		logger.info("ItemBasedRecommder 召回率：" + stats.getRecall());
-		logger.info("ItemBasedRecommder F1：" + stats.getF1Measure()+"  "+stats.getFallOut()+"  "+stats.getNormalizedDiscountedCumulativeGain());
+		logger.info("userbasedRecommder 准确率：" + stats.getPrecision());
+		logger.info("userbasedRecommder 召回率：" + stats.getRecall());
+		logger.info("userbasedRecommder F1: "+stats.getF1Measure());
+		//		logger.info("userbasedRecommder 召回率：" + stats.get);
 
 	}
 
 	public static void main(String[] args) throws IOException, TasteException {
-		SmartEngineEvaluator evaluator = new SmartEngineEvaluator();
+		SmartEngineEvaluatorUB evaluator = new SmartEngineEvaluatorUB();
 		evaluator.Run();
 	}
 }

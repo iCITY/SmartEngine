@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -14,35 +15,42 @@ import org.apache.mahout.cf.taste.recommender.IDRescorer;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
+import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 /**
- * @author zhangwen
+ * @author chenlianghui
  * 
  */
-public class AbstractRecommender implements Recommender {
+public class AbstractUserBasedRecommender implements Recommender {
 
 	/**
 	 * 
 	 */
-	public AbstractRecommender() {
+	public AbstractUserBasedRecommender() {
 		
 	}
 
-	public AbstractRecommender(DataModel dataModel) {
+	public AbstractUserBasedRecommender(DataModel dataModel) {
 		this.setDataModel(dataModel);
 	}
 	
 	private Recommender recommender;
 	private DataModel dataModel;	
-	private ItemSimilarity similarity;
+	private UserSimilarity similarity;
+	private UserNeighborhood neighborhood;
 	
-
-
 	
-	public ItemSimilarity getSimilarity() {
+	public UserNeighborhood getUserNeighborhood(){
+		return neighborhood;
+	}
+	public void setUserNeighborhood (UserNeighborhood  neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+	
+	public UserSimilarity getSimilarity() {
 		return similarity;
 	}
-	public void setSimilarity(ItemSimilarity similarity) {
+	public void setSimilarity(UserSimilarity similarity) {
 		this.similarity = similarity;
 	}	
 	

@@ -1,5 +1,7 @@
 package cn.wxcs.smartengine.recommender;
 
+import org.apache.mahout.cf.taste.impl.similarity.LogLikelihoodSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
 import org.apache.mahout.cf.taste.impl.similarity.UncenteredCosineSimilarity;
 import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
@@ -17,8 +19,9 @@ public class ItemBasedRecommender extends AbstractRecommender {
 	}
 	
 	private void Init() throws TasteException{
-		this.setSimilarity(new UncenteredCosineSimilarity(this.getDataModel()));
+		this.setSimilarity(new TanimotoCoefficientSimilarity (this.getDataModel()));
 		this.setRecommender(new GenericItemBasedRecommender(this.getDataModel(),this.getSimilarity()));
+	
 	}
 
 }
